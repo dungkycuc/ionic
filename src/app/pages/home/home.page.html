@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="I'm shopping for ..."
+      style="margin-top: 16px"
+      animated
+      mode="ios"
+      [(ngModel)]="searchText"
+      (ngModelChange)="searchData()"
+    ></ion-searchbar>
+    <ion-label>Refresh tao để load data</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-slides  #slider pager="true" [options]="slideOpts"(ionSlidesDidLoad)="slidesDidLoad(slider)">
+    <ion-slide *ngFor="let item of arr">
+      <ion-img [src]="item.url"></ion-img>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+<ion-grid *ngIf="shops && shops.length">
+  <ion-row *ngFor="let shop of shops">
+    <ion-col size="12">
+      <ion-item (click)="detailShop(shop)">
+        <ion-thumbnail slot="start">
+          <img [src]="shop?.url"/>
+        </ion-thumbnail>
+        <ion-label>
+          {{shop.name}}
+        </ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+</ion-grid>

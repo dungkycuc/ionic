@@ -1,42 +1,100 @@
-ion-toolbar {
-  --background: #f5f5f3;
 
-  ion-button {
-    text-transform: initial;
-    font-size: 17px;
+ion-content {
+  --background: url("/assets/back1.jpg") 0 0/100% 100% no-repeat;
+}
+
+ion-grid {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.6068802521008403) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.item-heading {
+  margin: 30px 0px;
+  //heading
+  h2 {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #fff;
   }
 }
 
-ion-content {
-  --background: #f5f5f3;
-
-  h1 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 26px;
-    color: #010100;
-    margin-bottom: 15%;
-  }
-
-  #form {
-    margin-top: 15%;
-    padding-left: 30px;
-    padding-right: 30px;
-
-    ion-button {
-      margin-top: 35px;
-      height: 48px;
-      font-size: 18px;
-      text-transform: initial;
-      border-radius: 50px;
-      box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
-      --box-shadow: none;
+.item-sub-heading {
+  margin: 30px 0px;
+  p {
+    font-size: 0.7em;
+    margin: 3px 0px;
+    color: #fff;
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: underline;
+      color: var(--ion-color-secondary);
     }
   }
 
-  p {
-    text-align: center;
-    color: #b6b6b6;
-    margin-top: 40px;
+  ion-button {
+    text-transform: capitalize;
   }
+}
+//*************************
+//*** LOGIN FORM INPUT SECTION ****
+//*************************
+.item-input {
+  //input field
+  ion-input {
+    --background: rgba(255, 255, 255, 0.3);
+    --color: #fff;
+    border-radius: 4px;
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  p {
+    font-size: 0.7em;
+    margin: 3px 0px;
+    color: #fff;
+  }
+}
+.item-button {
+  p {
+    font-size: 0.8em;
+    margin: 3px 0px;
+    color: #fff;
+    span {
+      font-weight: bold;
+      color: var(--ion-color-secondary);
+    }
+  }
+
+  ion-button {
+    font-size: 0.8em;
+    text-transform: capitalize;
+  }
+}
+
+.item-social-buttons {
+  margin: 30px 0px;
+  ion-button {
+    height: 60px;
+    width: 60px;
+    --border-radius: 50%;
+  }
+}
+
+.item-footer {
+  background: url("/assets/back1.jpg") 0 0/100% 100% no-repeat;
+  p {
+    font-size: 0.8em;
+    margin: 16px 0px;
+    color: #fff;
+    span {
+      font-weight: bold;
+      color: var(--ion-color-secondary);
+    }
+  }
+}
+ion-toast{
+  --background:red !important;
 }

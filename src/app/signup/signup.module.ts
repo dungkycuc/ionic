@@ -7,15 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
-import { InputModule } from '../components/input/input.module';
+import { IonShareModule } from '../common/share.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InputModule,
     SignupPageRoutingModule,
+    IonShareModule
   ],
   declarations: [SignupPage],
 })

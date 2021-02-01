@@ -2,17 +2,24 @@ import { IonicModule } from "@ionic/angular";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-
-import { TabsPageRoutingModule } from "./tabs-routing.module";
-
 import { TabsPage } from "./tabs.page";
 import { HttpClient } from "@angular/common/http";
 import { RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
-    path: "tabs",
+    path: "",
     component: TabsPage,
     children: [
+      {
+        path: "",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+              import("../pages/home/home.module").then((m) => m.HomePageModule),
+          },
+        ],
+      },
       {
         path: "home",
         children: [
@@ -57,25 +64,14 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: "",
-        redirectTo: "/tabs/tab1",
-        pathMatch: "full",
-      },
     ],
-  },
-  {
-    path: "",
-    redirectTo: "/tabs/tab1",
-    pathMatch: "full",
-  },
+  }
 ];
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule,
     RouterModule.forChild(routes)
   ],
   declarations: [TabsPage],

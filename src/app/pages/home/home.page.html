@@ -1,27 +1,88 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-searchbar
-      placeholder="I'm shopping for ..."
+
+    <ion-searchbar  showCancelButton="always" cancelButtonText="Hủy"
+      placeholder="Tìm kiếm sản phẩm"
       style="margin-top: 16px"
       animated
       mode="ios"
       [(ngModel)]="searchText"
       (ngModelChange)="searchData()"
     ></ion-searchbar>
-    <ion-label>Refresh tao để load data</ion-label>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <ion-slides  #slider pager="true" [options]="slideOpts"(ionSlidesDidLoad)="slidesDidLoad(slider)">
-    <ion-slide *ngFor="let item of arr">
-      <ion-img [src]="item.url"></ion-img>
-    </ion-slide>
-  </ion-slides>
+<ion-content class="home-content">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="main">
+      <div class="header-all">
+            <h3 class="title">AFDEX VIỆT NAM</h3>
+            <div class="title-desc">
+              <span>Sàn cung cầu nông nghiệp thực phẩm afdex</span>
+            </div>
+            <ion-slides class="slides" #slideHeader *ngIf="lstSlideHeader && lstSlideHeader.length" pager="true" [options]="slideHeaderOpts"  (ionSlidesDidLoad)="slidesDidLoad(slider)">
+              <ion-slide *ngFor="let slide of lstSlideHeader">
+                <ion-img [src]="slide?.url"></ion-img>
+                <a class="youtube-link">
+                  <ion-icon class="youtube-icon" name="play"></ion-icon>
+                </a>
+              </ion-slide>
+            </ion-slides>
+      </div>
+      <div class="main-chain">
+        <div class="main-chain-title">
+          <h3>Mua sản phẩm được lựa chọn từ vườn</h3>
+          <img src="" alt="">
+        </div>
+        <div class="slide-chains">
+          <ion-slides class="slides" #slideHeader *ngIf="lstSlideChains && lstSlideChains.length" pager="true" [options]="slideChains">
+            <ion-slide class="chain-item" *ngFor="let chain of lstSlideChains">
+              <ion-card class="item-card">
+                <ion-card-header>
+                  <ion-img [src]="chain?.url"></ion-img>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  <ion-button>
+                    {{chain.name}}
+                  </ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+      <ion-grid>
+        <ion-row *ngFor="let item of lstChains">
+          <ion-col size="12">{{item.title}}
+          </ion-col>
+          <ion-col size="12">
+            <ion-slides [options]="slideProduct">
+              <ion-slide *ngFor="let product of item.children">
+                <ion-card>
+                  <ion-card-content>
+                    <ion-img [src]="product?.url"></ion-img>
+                    <ion-label>{{product.name}}</ion-label>
+                    <ion-buttons>
+                      <ion-button color="danger">Mua ngay</ion-button>
+                    </ion-buttons>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+        </ion-row>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-grid>
+    </div>
 </ion-content>
 <ion-grid *ngIf="shops && shops.length">
   <ion-row *ngFor="let shop of shops">

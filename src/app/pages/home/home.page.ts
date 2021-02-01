@@ -12,9 +12,45 @@ import { CoreService } from "src/app/services/core.service";
   styleUrls: ["./home.page.scss"],
 })
 export class HomePage implements OnInit {
+  // ======== SLIDE ========
+  // VIEW CHILD
+  @ViewChild("slideHeader", { static: true })
+  slideHeader: IonSlides;
+  slideHeaderOpts = {
+    slidesPerView: 1,
+    effect: "flip",
+    speed: 1000,
+    initialSlide: 1,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  };
+  slideChains = {
+    slidesPerView: 3,
+    effect: "flip",
+    speed: 1000,
+    initialSlide: 1,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  };
+  slideProduct = {
+    slidesPerView: 2,
+    effect: "flip",
+    speed: 1000,
+    initialSlide: 1,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  }
+  // ======== END SLIDE ========
+
   searchText: string;
   lstShopsClone = [];
-  arr = [
+  lstSlideHeader = [
     {
       id: 1,
       name: 'X',
@@ -31,6 +67,104 @@ export class HomePage implements OnInit {
       url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
     }
   ];
+  lstSlideChains = [
+    {
+      id: 1,
+      name: 'X',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 2,
+      name: 'Y',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 3,
+      name: 'Z',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 1,
+      name: 'X',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 2,
+      name: 'Y',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 3,
+      name: 'Z',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    }, {
+      id: 1,
+      name: 'X',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 2,
+      name: 'Y',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    },
+    {
+      id: 3,
+      name: 'Z',
+      url: 'https://vcdn1-vnexpress.vnecdn.net/2019/09/29/2-1569755302.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eIlnCLgSWVtioKgU4I4VzA'
+    }
+  ];
+  lstChains = [
+    {
+      title: 'Rau',
+      children: [
+        {
+          name: 'Rau 1',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 2',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 3',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 4',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 5',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+      ]
+    },
+    {
+      title: 'Củ',
+      children: [
+        {
+          name: 'Rau 1',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 2',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 3',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 4',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+        {
+          name: 'Rau 5',
+          url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+        },
+      ]
+    }
+  ];
   shops = [];
 
   constructor(
@@ -41,18 +175,21 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    async.parallel(
+    console.log('xxxx');
+    async.waterfall(
       [
         (cb) => {
-          this.coreService.Get("/api/1common/v1/find/droplist/STATUS_ACTIVE").subscribe({
+          console.log('yyyyy');
+          this.coreService.Get("/api/common/v1/find/droplist/STATUS_ACTIVE").subscribe({
             next: data => {
-              console.log(111, data);
               cb();
             },
             error: error => {
               cb();
             }
           })
+        },
+        (cb, data) => {
         }
       ]
     )
@@ -86,7 +223,6 @@ export class HomePage implements OnInit {
       },
     ];
     this.lstShopsClone = _.cloneDeep(this.shops);
-    console.log(this.lstShopsClone);
     setTimeout(() => {
       event.target.complete();
     }, 300);
@@ -95,13 +231,229 @@ export class HomePage implements OnInit {
     this.shops = this.lstShopsClone.filter(ele => {
       return ele.name == this.searchText;
     });
-    console.log(this.shops);
   }
-  slidesDidLoad(slides: IonSlides) {
-    slides.startAutoplay();
+
+
+  slidesDidLoad = (slides: IonSlides) => {
+    // slides.startAutoplay()
   }
+  nextSlide = () => console.log(11, this.slideHeader);
+  prevSlide = () => this.slideHeader.slidePrev();
+
+
   detailShop() {
     console.log('xxx');
     this.nav.navigateForward(["tabs/account"]);
+  }
+  loadMoreData = (evt) => {
+    console.log(22, evt);
+    if (evt.isTrusted) {
+      this.lstChains = [
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+        {
+          title: 'Rau',
+          children: [
+            {
+              name: 'Rau 1',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 2',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 3',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 4',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+            {
+              name: 'Rau 5',
+              url: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_07_21/rau_xanh_thai_doc_2.jpg'
+            },
+          ]
+        },
+
+      ]
+    } else {
+      evt.target.complete();
+    }
+
   }
 }

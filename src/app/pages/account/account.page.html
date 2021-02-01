@@ -104,29 +104,29 @@
   </ion-grid>
 
   <ion-list lines="none" class="ion-margin">
-    <ion-item (click)="openPage('blogs')" detail *ngIf="!isAuthenticated">
+    <ion-item detail>
       <ion-label>
         <h2 translate>BLOGS</h2>
       </ion-label>
     </ion-item>
 
-    <ion-item (click)="openLanguageOptions()" detail *ngIf="!isAuthenticated">
+    <ion-item detail>
       <ion-label>
         <h2 translate>LANGUAGE</h2>
       </ion-label>
     </ion-item>
 
-    <ion-item (click)="aboutUs()" detail>
+    <ion-item detail>
       <ion-label>
         <h2 translate>ABOUTUS</h2>
       </ion-label>
     </ion-item>
-    <ion-item (click)="pp()" detail>
+    <ion-item detail>
       <ion-label>
         <h2 translate>PRIVACY</h2>
       </ion-label>
     </ion-item>
-    <ion-item (click)="terms()" detail>
+    <ion-item detail>
       <ion-label>
         <h2 translate>TERMS</h2>
       </ion-label>

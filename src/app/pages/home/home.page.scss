@@ -2,23 +2,51 @@ ion-content {
   --background: #f9f9f9;
 }
 
-.slider {
-  height: 180px;
-  margin: 16px;
-  margin-bottom: 0px;
-  border-radius: 12px;
-  box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.03);
-  background: #fff;
+.home-content {
+  .main {
+    .header-all {
+      h3.title {
+        color: red;
+        font-weight: bold;
+        text-shadow: 0 0 5px white;
+      }
+      .slides {
+        height: 180px;
+        margin: 16px;
+        margin-bottom: 0px;
+        border-radius: 12px;
+        box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.03);
+        background: #fff;
+        a.youtube-link {
+          display: flex;
+          padding: 10px 20px;
+          background: red;
+          position: absolute;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          .youtube-icon{
+            color: white;
+          }
+        }
+      }
+    }
+    .main-chain {
+      .slide-chains {
+        .slides {
+          .chain-item {
+            .item-card {
+              ion-card-header {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-.swiper-button-prev {
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiBoZWlnaHQ9IjUwcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MCA1MCIgd2lkdGg9IjUwcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxyZWN0IGZpbGw9Im5vbmUiIGhlaWdodD0iNTAiIHdpZHRoPSI1MCIvPjxwb2x5Z29uIHBvaW50cz0iMzUsNDcuMjUgMzcuMDg2LDQ1LjE2NCAxNi45MjIsMjUgMzcuMDg2LDQuODM2IDM1LDIuNzUgMTIuNzUsMjUgIi8+PHJlY3QgZmlsbD0ibm9uZSIgaGVpZ2h0PSI1MCIgd2lkdGg9IjUwIi8+PC9zdmc+);
-  background-size: 16px 44px;
-}
-.swiper-button-next {
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiBoZWlnaHQ9IjUwcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MCA1MCIgd2lkdGg9IjUwcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxyZWN0IGZpbGw9Im5vbmUiIGhlaWdodD0iNTAiIHdpZHRoPSI1MCIvPjxwb2x5Z29uIHBvaW50cz0iMTUsMi43NSAxMi45MTQsNC44MzYgMzMuMDc4LDI1IDEyLjkxNCw0NS4xNjQgMTUsNDcuMjUgMzcuMjUsMjUgIi8+PC9zdmc+);
-  background-size: 16px 44px;
-}
 
 .search-results {
   margin-top: 12px;
@@ -286,10 +314,6 @@ ion-grid {
     text-transform: capitalize;
     margin: 0px;
     margin-top: 4px;
-
-    //border-bottom: 4px solid var(--ion-color-primary);
-    //border-bottom: 2px solid rgb(207, 207, 207);
-    //color: rgb(207, 207, 207);
   }
 
   h3 {
